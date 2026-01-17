@@ -89,20 +89,26 @@ const handleOrganClick = (organ) => {
 
 <template>
   <div class="app-root">
-    <!-- 导航栏 -->
-    <GuideBar />
+    <!-- 路由出口 -->
+    <router-view />
     
-    <div class="container">
-      <!-- 左侧固定区域 -->
-      <LeftSection />
+    <!-- 导航栏和应用内容（非欢迎页面） -->
+    <template v-if="$route.path !== '/'">
+      <!-- 导航栏 -->
+      <GuideBar />
+      
+      <div class="container">
+        <!-- 左侧固定区域 -->
+        <LeftSection />
 
-      <!-- 右侧滑动区域 -->
-      <RightSection 
-        :organs="organs" 
-        :selectedOrgan="selectedOrgan" 
-        @organClick="handleOrganClick"
-      />
-    </div>
+        <!-- 右侧滑动区域 -->
+        <RightSection 
+          :organs="organs" 
+          :selectedOrgan="selectedOrgan" 
+          @organClick="handleOrganClick"
+        />
+      </div>
+    </template>
   </div>
 </template>
 

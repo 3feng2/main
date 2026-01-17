@@ -68,7 +68,7 @@ onUnmounted(() => {
           <!-- 头像按钮 -->
           <button 
             class="avatar-btn" 
-            @click="toggleDropdown"
+            @click.stop="toggleDropdown"
             aria-haspopup="true"
             :aria-expanded="dropdownState.show"
           >
