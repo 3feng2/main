@@ -1,5 +1,6 @@
 <script setup>
 import { ref, reactive } from 'vue';
+import GuideBar from './GuideBar.vue';
 import LeftSection from './LeftSection.vue';
 import RightSection from './RightSection.vue';
 
@@ -87,24 +88,36 @@ const handleOrganClick = (organ) => {
 </script>
 
 <template>
-  <div class="container">
-    <!-- 左侧固定区域 -->
-    <LeftSection />
+  <div class="app-root">
+    <!-- 导航栏 -->
+    <GuideBar />
+    
+    <div class="container">
+      <!-- 左侧固定区域 -->
+      <LeftSection />
 
-    <!-- 右侧滑动区域 -->
-    <RightSection 
-      :organs="organs" 
-      :selectedOrgan="selectedOrgan" 
-      @organClick="handleOrganClick"
-    />
+      <!-- 右侧滑动区域 -->
+      <RightSection 
+        :organs="organs" 
+        :selectedOrgan="selectedOrgan" 
+        @organClick="handleOrganClick"
+      />
+    </div>
   </div>
 </template>
 
 <style scoped>
+.app-root {
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
 .container {
   display: flex;
   min-height: 100vh;
   position: relative;
   overflow: hidden;
+  padding-top: 60px; /* 为导航栏留出空间 */
 }
 </style>
