@@ -5,3 +5,8 @@ spring:
   data:
     mongodb:
       uri: mongodb://localhost:27017/digital_human_db
+
+logging:
+  charset:
+    console: UTF-8
+    file: UTF-8

@@ -1,5 +1,8 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue';
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
 
 // 控制下拉菜单显示和展开状态
 const dropdownState = ref({
@@ -32,6 +35,21 @@ const handleClickOutside = (event) => {
       dropdownState.value.show = false;
     }, 300);
   }
+};
+
+// 退出登录函数
+const handleLogout = () => {
+  // 清除用户信息（如果有）
+  // 可以添加清除localStorage或其他存储的用户信息的逻辑
+  
+  // 关闭下拉菜单
+  dropdownState.value.expanded = false;
+  setTimeout(() => {
+    dropdownState.value.show = false;
+  }, 300);
+  
+  // 跳转到登录页面
+  router.push('/login');
 };
 
 // 添加点击外部事件监听
@@ -129,7 +147,7 @@ onUnmounted(() => {
               </li>
               <li class="menu-divider"></li>
               <li class="menu-item">
-                <a href="#" class="menu-link logout">
+                <a href="#" class="menu-link logout" @click.prevent="handleLogout">
                   <span class="menu-icon">🚪</span>
                   <span class="menu-text">退出登录</span>
                 </a>

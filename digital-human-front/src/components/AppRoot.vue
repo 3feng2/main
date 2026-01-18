@@ -92,8 +92,8 @@ const handleOrganClick = (organ) => {
     <!-- 路由出口 -->
     <router-view />
     
-    <!-- 导航栏和应用内容（非欢迎页面） -->
-    <template v-if="$route.path !== '/'">
+    <!-- 导航栏和应用内容（非认证页面） -->
+    <template v-if="$route.path !== '/' && $route.path !== '/login' && $route.path !== '/signup'">
       <!-- 导航栏 -->
       <GuideBar />
       
